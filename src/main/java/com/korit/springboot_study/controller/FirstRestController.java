@@ -1,5 +1,6 @@
 package com.korit.springboot_study.controller;
 
+import com.korit.springboot_study.dto.request.study.ReqAddStudentDto;
 import com.korit.springboot_study.dto.request.study.ReqStudentDto;
 import com.korit.springboot_study.dto.response.study.RespStudentDto;
 import io.swagger.annotations.Api;
@@ -117,7 +118,7 @@ public class FirstRestController {
 
     @PostMapping("/api/student")
     @ApiOperation(value = "학생 추가", notes = "학생 정보를 입력받아 user_tb에 데이터를 저장")
-    public void addStudent() {
+    public void addStudent(@RequestBody ReqAddStudentDto reqAddStudentDto) {
 
         return;
     }
