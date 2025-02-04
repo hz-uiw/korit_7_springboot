@@ -1,6 +1,7 @@
 package com.korit.springboot_study.controller;
 
 import com.korit.springboot_study.dto.request.study.ReqStudentDto;
+import com.korit.springboot_study.dto.response.study.RespStudentDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController // @Controller + @ResponseBody
-@Api(tags = "REST API 수업")
+@Api(tags = "REST API 수업")  // 해당 controller 이름 변경
 public class FirstRestController {
 
 //    @ResponseBody   // 데이터로 응답 -> Hello가 없지만 Hello라는 내용으로 응답
@@ -107,10 +108,18 @@ public class FirstRestController {
     }
 
     @GetMapping("/api/student4/{studentId}")
-    public Map<String, Object> getStudent4(
+    public RespStudentDto getStudent4(
             @ApiParam(value = "학생 ID", required = true)
             @PathVariable int studentId,
-            ReqStudentDto reqStudentDto) {
-        return Map.of("id", studentId, "name", reqStudentDto.getName(), "age", reqStudentDto.getAge());
+            @ModelAttribute ReqStudentDto reqStudentDto) {
+        return new RespStudentDto(100, "권민창", 26);
     }
+
+    @PostMapping("/api/student")
+    @ApiOperation(value = "학생 추가", notes = "학생 정보를 입력받아 user_tb에 데이터를 저장")
+    public void addStudent() {
+
+        return;
+    }
+
 }
