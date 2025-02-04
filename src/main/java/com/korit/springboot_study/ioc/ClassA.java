@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class ClassA {
 
     public void classCallA() {
-        System.out.println("ClassA 메서드 호출");
+        System.out.println("ClassA 메소드 호출");
     }
 }
