@@ -2,10 +2,12 @@ package com.korit.springboot_study.controller;
 
 import com.korit.springboot_study.dto.request.study.ReqAddStudentDto;
 import com.korit.springboot_study.dto.request.study.ReqStudentDto;
+import com.korit.springboot_study.dto.response.study.RespAddStudentDto;
 import com.korit.springboot_study.dto.response.study.RespStudentDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -118,9 +120,9 @@ public class FirstRestController {
 
     @PostMapping("/api/student")
     @ApiOperation(value = "학생 추가", notes = "학생 정보를 입력받아 user_tb에 데이터를 저장")
-    public void addStudent(@RequestBody ReqAddStudentDto reqAddStudentDto) {
-
-        return;
+    public ResponseEntity<RespAddStudentDto> addStudent(@RequestBody ReqAddStudentDto reqAddStudentDto) {
+        System.out.println(reqAddStudentDto);
+        return ;
     }
 
 }
