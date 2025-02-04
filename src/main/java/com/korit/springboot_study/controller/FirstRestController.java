@@ -142,7 +142,6 @@ public class FirstRestController {
     @ApiOperation(value = "학생 정보 삭제", notes = "학생 ID를 기준으로 정보 삭제")
     @DeleteMapping("/api/student/{studentId}")
     public ResponseEntity<?> deleteStudent(@PathVariable int studentId) {
-
         return ResponseEntity.ok().body(null);
     }
 }

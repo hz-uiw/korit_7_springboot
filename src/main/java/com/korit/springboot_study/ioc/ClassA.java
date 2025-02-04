@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ClassA {
 
-    @Autowired
+    @Autowired  // ClassD 클래스 의존 => ClassD를 ClassA에 의존성 주입
     private ClassD d;
 
     public void classCallA() {
-        System.out.println("ClassA 메소드 호출");
+        System.out.println("ClassA 메서드 호출");
     }
 }

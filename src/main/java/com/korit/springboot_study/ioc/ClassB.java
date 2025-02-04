@@ -1,7 +1,5 @@
 package com.korit.springboot_study.ioc;
 
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -17,7 +15,6 @@ public class ClassB {
     private ClassC c2;
 
     public void classCallB() {
-
-        System.out.println("ClassB 메소드 호출");
+        System.out.println("ClassB 메서드 호출");
     }
 }
