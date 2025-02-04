@@ -7,6 +7,7 @@ import com.korit.springboot_study.dto.response.study.RespStudentDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,8 +40,8 @@ public class FirstRestController {
         return Map.of("name", "권민창");
     }
 
-    @GetMapping("api/student")
     @ApiOperation(value = "학생 조회(일반 for문 선형 탐색)", notes = "일반 for문을 사용하여 선형 탐색 학습")
+    @GetMapping("api/student")
     public Map<String, Object> getStudent(
             @ApiParam(value = "조회할 학생 인덱스", required = true)
             @RequestParam(required = false) int studentId) {
@@ -66,8 +67,8 @@ public class FirstRestController {
     }
 
     // 향상된 for문
-    @GetMapping("api/student2")
     @ApiOperation(value = "학생 조회(상향된 for문 선형 탐색)", notes = "향상된 for문을 사용하여 선형 탐색 학습")
+    @GetMapping("api/student2")
     public Map<String, Object> getStudent2(
             @ApiParam(value = "조회할 학생 인덱스", required = true)
             @RequestParam(required = false) int studentId) {
@@ -92,8 +93,8 @@ public class FirstRestController {
         return foundStudent;
     }
 
-    @GetMapping("api/student3")
     @ApiOperation(value = "학생 조회(stream lambda 탐색)", notes = "Lambda를 사용하여 탐색 학습")
+    @GetMapping("api/student3")
     public Map<String, Object> getStudent3(
             @ApiParam(value = "Lambda 사용 탐색", required = true)
             @RequestParam(required = false) int studentId) {
@@ -110,6 +111,9 @@ public class FirstRestController {
         return responseData;
     }
 
+    // get: params로 요청
+    // post, put: json으로 요청
+
     @GetMapping("/api/student4/{studentId}")
     public RespStudentDto getStudent4(
             @ApiParam(value = "학생 ID", required = true)
@@ -118,11 +122,27 @@ public class FirstRestController {
         return new RespStudentDto(100, "권민창", 26);
     }
 
-    @PostMapping("/api/student")
     @ApiOperation(value = "학생 추가", notes = "학생 정보를 입력받아 user_tb에 데이터를 저장")
+    @PostMapping("/api/student")
     public ResponseEntity<RespAddStudentDto> addStudent(@RequestBody ReqAddStudentDto reqAddStudentDto) {
         System.out.println(reqAddStudentDto);
-        return ;
+        return ResponseEntity.badRequest().body(new RespAddStudentDto("학생 추가 실패", false));
     }
 
+    @ApiOperation(value = "학생 정보 수정", notes = "학생 ID를 기준으로 학생 정보를 수정")
+    @PutMapping("/api/student/{studentId}")
+    public ResponseEntity<?> updateStudent(
+            @ApiParam(value = "학생 ID", example = "1", required = true)
+            @PathVariable int studentId,
+            @RequestBody Map<String, Object> reqBody) {
+        System.out.println(reqBody);
+        return ResponseEntity.ok().body(null);
+    }
+
+    @ApiOperation(value = "학생 정보 삭제", notes = "학생 ID를 기준으로 정보 삭제")
+    @DeleteMapping("/api/student/{studentId}")
+    public ResponseEntity<?> deleteStudent(@PathVariable int studentId) {
+
+        return ResponseEntity.ok().body(null);
+    }
 }
