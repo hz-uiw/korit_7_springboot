@@ -106,11 +106,11 @@ public class FirstRestController {
         return responseData;
     }
 
-//    @GetMapping("/api/student4/{studentId}")
-//    public Map<String, Object> getStudent4(
-//            @ApiParam(value = "학생 ID", required = true)
-//            @PathVariable int studentId,
-//            ReqStudentDto reqStudentDto) {
-//        return Map.of("id", studentId, "name", reqStudentDto.getName(), "age", reqStudentDto.getAge());
-//    }
+    @GetMapping("/api/student4/{studentId}")
+    public Map<String, Object> getStudent4(
+            @ApiParam(value = "학생 ID", required = true)
+            @PathVariable int studentId,
+            ReqStudentDto reqStudentDto) {
+        return Map.of("id", studentId, "name", reqStudentDto.getName(), "age", reqStudentDto.getAge());
+    }
 }
