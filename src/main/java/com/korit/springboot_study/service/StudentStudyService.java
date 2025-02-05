@@ -15,10 +15,10 @@ public class StudentStudyService {
     @Autowired
     private StudentStudyRepository studentStudyRepository;
 
-//    public SuccessResponseDto<List<Major>> getMajorsAll() {
-//        Optional<List<Major>> foundMajors = studentStudyRepository.findMajorAll();
-//        if(foundMajors.isEmpty()) {
-//            return
-//        }
-//    }
+    public SuccessResponseDto<List<Major>> getMajorsAll() {
+        Optional<List<Major>> foundMajors = studentStudyRepository.findMajorAll();
+        if(foundMajors.isEmpty()) {
+            return
+        }
+    }
 }
