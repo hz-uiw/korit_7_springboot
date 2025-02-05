@@ -14,7 +14,7 @@ public class SuccessResponseDto<T> extends ResponseDto<T> {
     private final int status;
 
     @ApiModelProperty(value = "응답 메시지", example = "요청이 성공적으로 처리되었습니다.")
-    private final String message;
+    private String message;
 
     public SuccessResponseDto(T data) {
         super(data);

@@ -14,7 +14,7 @@ public class NotFoundResponseDto<T> extends ResponseDto<T> {
     private final int status;
 
     @ApiModelProperty(value = "응답 메시지", example = "데이터를 찾을 수 없습니다.")
-    private final String message;
+    private String message;
 
     public NotFoundResponseDto(T data) {
         super(data);
