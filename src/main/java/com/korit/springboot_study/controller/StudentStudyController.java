@@ -1,5 +1,6 @@
 package com.korit.springboot_study.controller;
 
+import com.korit.springboot_study.dto.request.study.ReqAddInstructorDto;
 import com.korit.springboot_study.dto.request.study.ReqAddMajorDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.study.Instructor;
@@ -39,5 +40,11 @@ public class StudentStudyController {
     public ResponseEntity<SuccessResponseDto<?>> addMajor(@RequestBody ReqAddMajorDto reqAddMajorDto) {
         System.out.println(reqAddMajorDto);
         return ResponseEntity.ok().body(studentStudyService.addMajor(reqAddMajorDto));
+    }
+
+    @PostMapping("api/instructor")
+    public ResponseEntity<SuccessResponseDto<?>> addInstructor(@RequestBody ReqAddInstructorDto reqAddInstructorDto) {
+        System.out.println(reqAddInstructorDto);
+        return ResponseEntity.ok().body(null);
     }
 }

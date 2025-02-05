@@ -51,4 +51,16 @@ public class StudentStudyRepository {
         }
         return Optional.ofNullable(new Major(major.getMajorId(), major.getMajorName()));
     }
+
+    public Optional<Instructor> saveInstructor(Instructor instructor) throws DuplicateKeyException {
+        try {
+            studentStudyMapper.insertInstructor(instructor);
+        } catch (DuplicateKeyException e) {
+            throw new CustomDuplicateKeyException(
+                    e.getMessage(),
+                    Map.of("instructorName", "이미 존재하는 교수명입니다.")
+            );
+        }
+        return Optional.ofNullable(new Instructor(instructor.getInstructorId(), instructor.getInstructorName()));
+    }
 }

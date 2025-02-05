@@ -1,5 +1,6 @@
 package com.korit.springboot_study.service;
 
+import com.korit.springboot_study.dto.request.study.ReqAddInstructorDto;
 import com.korit.springboot_study.dto.request.study.ReqAddMajorDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.study.Instructor;
@@ -39,8 +40,15 @@ public class StudentStudyService {
         return new SuccessResponseDto<>(
                 studentStudyRepository
                         .saveMajor(new Major(0, reqAddMajorDto.getMajorName()))
-                        .orElseThrow()
+                        .get()
         );
+    }
 
+    public SuccessResponseDto<Instructor> addInstructor(ReqAddInstructorDto reqAddInstructorDto) throws DuplicateKeyException {
+        return new SuccessResponseDto<>(
+                studentStudyRepository
+                        .saveInstructor(new Instructor(0, reqAddInstructorDto.getInstructorName()))
+                        .get()
+        );
     }
 }

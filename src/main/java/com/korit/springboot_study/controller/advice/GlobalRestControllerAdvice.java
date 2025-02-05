@@ -4,7 +4,6 @@ import com.korit.springboot_study.dto.response.common.BadRequestResponseDto;
 import com.korit.springboot_study.dto.response.common.NotFoundResponseDto;
 import com.korit.springboot_study.exception.CustomDuplicateKeyException;
 import org.apache.ibatis.javassist.NotFoundException;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
