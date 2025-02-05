@@ -4,8 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @ApiModel(description = "성공 응답 DTO")
 public class SuccessResponseDto<T> extends ResponseDto<T> {
