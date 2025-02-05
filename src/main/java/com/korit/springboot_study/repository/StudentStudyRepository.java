@@ -4,6 +4,7 @@ import com.korit.springboot_study.entity.study.Instructor;
 import com.korit.springboot_study.entity.study.Major;
 import com.korit.springboot_study.mapper.StudentStudyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -35,5 +36,10 @@ public class StudentStudyRepository {
         return foundInstructors.isEmpty()
                 ? Optional.empty()
                 : Optional.ofNullable(foundInstructors);
+    }
+
+    public Optional<Major> saveMajor(Major major) throws DuplicateKeyException {
+        studentStudyMapper.insertMajor(major);
+        return Optional.ofNullable(new Major(major.getMajorId(), major.getMajorName()));
     }
 }

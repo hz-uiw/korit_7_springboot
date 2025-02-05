@@ -5,19 +5,26 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.korit.springboot_study.mapper.StudentStudyMapper">
-<!-- id:  type: 클래스 경로, property: entity안의 변수명 -->
+<!-- type: 클래스 경로, property: entity안의 변수명 -->
     <resultMap id="majorResultMap" type="com.korit.springboot_study.entity.study.Major">
         <id property="majorId" column="major_id" />
         <result property="majorName" column="major_name" />
     </resultMap>
 
     <select id="selectMajorsAll" resultMap="majorResultMap">
+<!-- resultMap id와 resultMap의 값이 같다 -->
         select
             major_id,
             major_name
         from
             major_tb
     </select>
+
+    <insert id="insertMajor" keyProperty="majorId" useGeneratedKeys="true">
+<!-- keyProperty: 엔티티의 변수명       -->
+        insert into major_tb
+        values (default, #{majorName})
+    </insert>
 
     <resultMap id="instructorResultMap" type="com.korit.springboot_study.entity.study.Instructor">
         <id property="instructorId" column="instructor_id" />

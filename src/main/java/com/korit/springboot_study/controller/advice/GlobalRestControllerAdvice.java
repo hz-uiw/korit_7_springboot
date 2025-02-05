@@ -2,6 +2,7 @@ package com.korit.springboot_study.controller.advice;
 
 import com.korit.springboot_study.dto.response.common.NotFoundResponseDto;
 import org.apache.ibatis.javassist.NotFoundException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,4 +14,10 @@ public class GlobalRestControllerAdvice {
     public ResponseEntity<NotFoundResponseDto<?>> notFound(NotFoundException e) {
         return ResponseEntity.status(404).body(new NotFoundResponseDto<>(e.getMessage()));
     }
+
+    @ExceptionHandler(value = DuplicateKeyException.class)
+    public ResponseEntity<NotFoundResponseDto<?>> duplicateKey(DuplicateKeyException e) {
+        return ResponseEntity.status(400).body(new NotFoundResponseDto<>(e.getMessage()));
+    }
+
 }

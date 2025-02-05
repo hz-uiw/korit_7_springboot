@@ -10,4 +10,6 @@ import java.util.List;
 public interface StudentStudyMapper {
     List<Major> selectMajorsAll();
     List<Instructor> selectInstructorsAll();
+
+    int insertMajor(Major major);
 }
