@@ -9,6 +9,7 @@ import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +34,7 @@ public class StudentStudyService {
         return new SuccessResponseDto<>(foundInstructors);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public SuccessResponseDto<Major> addMajor(ReqAddMajorDto reqAddMajorDto) throws DuplicateKeyException {
         return new SuccessResponseDto<>(
                 studentStudyRepository
