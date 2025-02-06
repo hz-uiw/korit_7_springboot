@@ -14,11 +14,11 @@ public class BookRepository {
     @Autowired
     private BookMapper bookMapper;
 
-    public Optional<List<Book>> selectBooksAll() {
-        List<Book> foundAllBook = bookMapper.selectBooksAll();
+    public Optional<List<Book>> findAllBook() {
+        List<Book> foundBooks = bookMapper.selectBooksAll();
 
-        return foundAllBook.isEmpty()
+        return foundBooks.isEmpty()
                 ? Optional.empty()
-                : Optional.ofNullable(foundAllBook);
+                : Optional.ofNullable(foundBooks);
     }
 }

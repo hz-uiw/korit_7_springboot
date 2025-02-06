@@ -15,7 +15,7 @@ public class AuthorService {
     private AuthorRepository authorRepository;
 
     public SuccessResponseDto<List<Author>> getAllAuthors() throws NotFoundException {
-        List<Author> foundAuthors = authorRepository.selectAuthorsAll()
+        List<Author> foundAuthors = authorRepository.findAllAuthor()
                 .orElseThrow(() -> new NotFoundException("저자 정보가 존재하지 않습니다."));
         return new SuccessResponseDto<>(foundAuthors);
     }

@@ -14,12 +14,11 @@ public class AuthorRepository {
     @Autowired
     private AuthorMapper authorMapper;
 
-    public Optional<List<Author>> selectAuthorsAll() {
-        List<Author> foundAllAuthors = authorMapper.selectAuthorsAll();
+    public Optional<List<Author>> findAllAuthor() {
+        List<Author> foundAuthors = authorMapper.selectAuthorsAll();
 
-        return foundAllAuthors.isEmpty()
+        return foundAuthors.isEmpty()
                 ? Optional.empty()
-                : Optional.ofNullable(foundAllAuthors);
-
+                : Optional.ofNullable(foundAuthors);
     }
 }

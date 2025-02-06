@@ -11,7 +11,4 @@ import java.util.List;
 @Mapper
 public interface BookMapper {
     List<Book> selectBooksAll();
-
-//    List<Category> selectCategoriesAll();
-//    List<Publisher> selectPublishersAll();
 }

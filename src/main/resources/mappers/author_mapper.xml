@@ -14,9 +14,9 @@
     <!--  작가 전체 조회  -->
     <select id="selectAuthorsAll" resultMap="authorResultMap">
         select
-        author_id,
-        author_name
+            author_id,
+            author_name
         from
-        author_tb
+            author_tb
     </select>
 </mapper>
