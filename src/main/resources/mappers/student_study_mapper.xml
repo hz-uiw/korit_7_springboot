@@ -39,8 +39,6 @@
 
 
 
-
-
     <resultMap id="instructorResultMap" type="com.korit.springboot_study.entity.study.Instructor">
         <id property="instructorId" column="instructor_id" />
         <result property="instructorName" column="instructor_name" />
