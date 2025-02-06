@@ -20,11 +20,26 @@
             major_tb
     </select>
 
+
+
     <insert id="insertMajor" keyProperty="majorId" useGeneratedKeys="true">
 <!-- keyProperty: 엔티티의 변수명       -->
         insert into major_tb
         values (default, #{majorName})
     </insert>
+
+    <update id="updateMajor" keyProperty="majorId" useGeneratedKeys="true">
+        update
+            major_tb
+        set
+            major_name = #{majorName}
+        where
+            major_id = #{majorId}
+    </update>
+
+
+
+
 
     <resultMap id="instructorResultMap" type="com.korit.springboot_study.entity.study.Instructor">
         <id property="instructorId" column="instructor_id" />

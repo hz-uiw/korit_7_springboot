@@ -3,6 +3,7 @@ package com.korit.springboot_study.repository;
 import com.korit.springboot_study.entity.study.Instructor;
 import com.korit.springboot_study.entity.study.Major;
 import com.korit.springboot_study.exception.CustomDuplicateKeyException;
+import com.korit.springboot_study.exception.CustomNullPointerException;
 import com.korit.springboot_study.mapper.StudentStudyMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -62,5 +63,22 @@ public class StudentStudyRepository {
             );
         }
         return Optional.ofNullable(new Instructor(instructor.getInstructorId(), instructor.getInstructorName()));
+    }
+
+    public Optional<Major> updateMajor(Major major) throws DuplicateKeyException, NullPointerException {
+        try {
+            studentStudyMapper.updateMajor(major);
+        } catch (DuplicateKeyException e) {
+            throw new CustomDuplicateKeyException(
+                    e.getMessage(),
+                    Map.of("majorId", "이미 존재하는 학과명입니다.")
+                    );
+        } catch (NullPointerException e) {
+            throw new CustomNullPointerException(
+                    e.getMessage(),
+                    Map.of("majorName", "학과명을 채워야 합니다.")
+            );
+        }
+
     }
 }

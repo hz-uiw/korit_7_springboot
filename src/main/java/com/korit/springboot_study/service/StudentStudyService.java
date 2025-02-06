@@ -44,6 +44,7 @@ public class StudentStudyService {
         );
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public SuccessResponseDto<Instructor> addInstructor(ReqAddInstructorDto reqAddInstructorDto) throws DuplicateKeyException {
         return new SuccessResponseDto<>(
                 studentStudyRepository
@@ -51,4 +52,8 @@ public class StudentStudyService {
                         .get()
         );
     }
+
+//    public SuccessResponseDto<Major> updateMajor(Major major) throws DuplicateKeyException {
+//        return new SuccessResponseDto<>();
+//    }
 }
