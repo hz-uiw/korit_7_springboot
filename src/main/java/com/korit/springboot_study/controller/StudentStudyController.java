@@ -12,15 +12,16 @@ import io.swagger.annotations.ApiParam;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BeanPropertyBindingResult;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
-import java.util.regex.Pattern;
 
 @RestController
+@Validated  // 컨트롤러 안에서 바로 유효검사, @Valid와는 상관없다
 public class StudentStudyController {
 
     @Autowired
@@ -40,17 +41,8 @@ public class StudentStudyController {
     }
 
     @PostMapping("/api/study/major")
-    public ResponseEntity<SuccessResponseDto<Major>> addMajor(@RequestBody ReqAddMajorDto reqAddMajorDto) throws MethodArgumentNotValidException {
+    public ResponseEntity<SuccessResponseDto<Major>> addMajor(@Valid @RequestBody ReqAddMajorDto reqAddMajorDto) throws MethodArgumentNotValidException {
         System.out.println(reqAddMajorDto);
-//        boolean isNull = reqAddMajorDto == null;
-//        boolean isBlank = reqAddMajorDto.getMajorName().isBlank();
-//        boolean isNotKor = !Pattern.matches("^[ㄱ-ㅎ|가-힣]*$", reqAddMajorDto.getMajorName());
-//
-//        if(isNull || isBlank || isNotKor) {
-//            BindingResult bindingResult = new BeanPropertyBindingResult(null, "major");
-//
-//            throw new MethodArgumentNotValidException(null, bindingResult);
-//        }
         return ResponseEntity.ok().body(studentStudyService.addMajor(reqAddMajorDto));
     }
 
@@ -63,8 +55,8 @@ public class StudentStudyController {
     @PutMapping("/api/study/major/{majorId}")
     public ResponseEntity<SuccessResponseDto<?>> updateMajor(
             @ApiParam(value = "학과 ID", example = "1", required = true)
-            @PathVariable int majorId,
-            @RequestBody ReqUpdateMajorDto reqUpdateMajorDto) {
+            @PathVariable @Min(value = 1, message = "학과 ID는 1이상의 정수여야합니다.") int majorId,
+            @Valid @RequestBody ReqUpdateMajorDto reqUpdateMajorDto) throws MethodArgumentNotValidException {
         return ResponseEntity.ok().body(null);
     }
 
