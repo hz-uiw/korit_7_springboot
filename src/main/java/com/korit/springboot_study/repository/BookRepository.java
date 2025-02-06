@@ -15,10 +15,10 @@ public class BookRepository {
     private BookMapper bookMapper;
 
     public Optional<List<Book>> selectBooksAll() {
-        List<Book> foundAllBookInfo = bookMapper.selectBooksAll();
+        List<Book> foundAllBook = bookMapper.selectBooksAll();
 
-        return foundAllBookInfo.isEmpty()
+        return foundAllBook.isEmpty()
                 ? Optional.empty()
-                : Optional.ofNullable(foundAllBookInfo);
+                : Optional.ofNullable(foundAllBook);
     }
 }

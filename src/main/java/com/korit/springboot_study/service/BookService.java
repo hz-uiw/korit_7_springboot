@@ -17,7 +17,7 @@ public class BookService {
 
     public SuccessResponseDto<List<Book>> getAllBooks() throws NotFoundException {
         List<Book> foundBooks = bookRepository.selectBooksAll()
-                .orElseThrow(() -> new NotFoundException("도서정보가 존재하지 않습니다."));
+                .orElseThrow(() -> new NotFoundException("도서 정보가 존재하지 않습니다."));
         return new SuccessResponseDto<>(foundBooks);
     }
 
