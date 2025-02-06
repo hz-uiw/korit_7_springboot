@@ -56,8 +56,8 @@ public class StudentStudyController {
     public ResponseEntity<SuccessResponseDto<?>> updateMajor(
             @ApiParam(value = "학과 ID", example = "1", required = true)
             @PathVariable @Min(value = 1, message = "학과 ID는 1이상의 정수여야합니다.") int majorId,
-            @Valid @RequestBody ReqUpdateMajorDto reqUpdateMajorDto) throws MethodArgumentNotValidException {
-        return ResponseEntity.ok().body(null);
+            @Valid @RequestBody ReqUpdateMajorDto reqUpdateMajorDto) throws NotFoundException, MethodArgumentNotValidException {
+        return ResponseEntity.ok().body(studentStudyService.modifyMajor(majorId, reqUpdateMajorDto));
     }
 
 }

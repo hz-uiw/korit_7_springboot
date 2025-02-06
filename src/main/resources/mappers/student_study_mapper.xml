@@ -22,13 +22,13 @@
 
 
 
-    <insert id="insertMajor" keyProperty="majorId" useGeneratedKeys="true">
+    <insert id="insertMajor">
 <!-- keyProperty: 엔티티의 변수명       -->
         insert into major_tb
         values (default, #{majorName})
     </insert>
 
-    <update id="updateMajor" keyProperty="majorId" useGeneratedKeys="true">
+    <update id="updateMajorName" keyProperty="majorId" useGeneratedKeys="true">
         update
             major_tb
         set
