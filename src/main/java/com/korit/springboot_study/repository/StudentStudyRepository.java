@@ -7,13 +7,13 @@ import com.korit.springboot_study.mapper.StudentStudyMapper;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@RestController
+@Repository
 public class StudentStudyRepository {
 
     @Autowired
@@ -68,7 +68,7 @@ public class StudentStudyRepository {
     public Optional<Major> updateMajor(Major major) throws NotFoundException, DuplicateKeyException {
         try {
             if(studentStudyMapper.updateMajorName(major) < 1) {
-                throw new NotFoundException("해당 학과 ID는 존재하지 않습니다.");
+                return Optional.empty();
             }
 
         } catch (DuplicateKeyException e) {

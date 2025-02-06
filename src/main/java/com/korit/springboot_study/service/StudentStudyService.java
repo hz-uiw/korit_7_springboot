@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentStudyService {
@@ -58,7 +57,7 @@ public class StudentStudyService {
     public SuccessResponseDto<Major> modifyMajor(int majorId, ReqUpdateMajorDto reqUpdateMajorDto) throws NotFoundException {
         Major modifiedMajor = studentStudyRepository
                 .updateMajor(new Major(majorId, reqUpdateMajorDto.getMajorName()))
-                .get();
+                .orElseThrow(() -> new NotFoundException("해당 학과 ID는 존재하지 않습니다."));
         return new SuccessResponseDto<>(modifiedMajor);
     }
 }
