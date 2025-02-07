@@ -11,6 +11,7 @@
         <result property="publisherName" column="publisher_name" />
     </resultMap>
 
+    <!--  도서 출판사 전체 조회  -->
     <select id="selectPublishersAll" resultMap="publisherResultMap">
         select
             publisher_id,
@@ -18,4 +19,12 @@
         from
             publisher_tb
     </select>
+
+    <!--  도서 출판사 추가  -->
+    <insert id="insertPublisher" keyProperty="publisherId" useGeneratedKeys="true">
+        insert into
+            publisher_tb
+        values
+            (default, #{publisherName})
+    </insert>
 </mapper>

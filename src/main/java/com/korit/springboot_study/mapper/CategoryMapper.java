@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface CategoryMapper {
     List<Category> selectCategoriesAll();
+
+    int insertCategory(Category category);
 }

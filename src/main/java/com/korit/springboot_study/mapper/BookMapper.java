@@ -11,4 +11,6 @@ import java.util.List;
 @Mapper
 public interface BookMapper {
     List<Book> selectBooksAll();
+
+    int insertBook(Book book);
 }

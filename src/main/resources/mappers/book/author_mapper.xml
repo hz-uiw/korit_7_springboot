@@ -11,7 +11,7 @@
         <result property="authorName" column="author_name"/>
     </resultMap>
 
-    <!--  작가 전체 조회  -->
+    <!--  저자 전체 조회  -->
     <select id="selectAuthorsAll" resultMap="authorResultMap">
         select
             author_id,
@@ -19,4 +19,12 @@
         from
             author_tb
     </select>
+
+    <!--  저자 추가  -->
+    <insert id="insertAuthor" keyProperty="authorId" useGeneratedKeys="true">
+        insert into
+            author_tb
+        values
+            (default, #{authorName})
+    </insert>
 </mapper>

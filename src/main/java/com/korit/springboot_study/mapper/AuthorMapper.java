@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface AuthorMapper {
     List<Author> selectAuthorsAll();
+
+    int insertAuthor(Author author);
 }

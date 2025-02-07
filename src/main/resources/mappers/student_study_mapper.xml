@@ -53,7 +53,9 @@
     </select>
 
     <insert id="insertInstructor" keyProperty="instructorId" useGeneratedKeys="true">
-        insert into instructor_tb
-        values (default, #{instructorName})
+        insert into
+            instructor_tb
+        values
+            (default, #{instructorName})
     </insert>
 </mapper>

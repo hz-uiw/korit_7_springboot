@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import com.korit.springboot_study.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -24,4 +25,9 @@ public class AuthorController {
     public ResponseEntity<SuccessResponseDto<List<Author>>> getAuthors() throws NotFoundException {
         return ResponseEntity.ok().body(authorService.getAllAuthors());
     }
+
+//    @PostMapping("/api/author")
+//    public ResponseEntity<SuccessResponseDto<List<Author>>> addAuthor() {
+//        return ResponseEntity
+//    }
 }
