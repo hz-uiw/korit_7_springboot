@@ -16,8 +16,8 @@ public class BookRepository {
     @Autowired
     private BookMapper bookMapper;
 
-    public Optional<List<Book>> findAllBook() {
-        List<Book> foundBooks = bookMapper.selectBooksAll();
+    public Optional<List<Book>> findAllBook(String bookName) {
+        List<Book> foundBooks = bookMapper.selectBooksAllContaining(bookName);
 
         return foundBooks.isEmpty()
                 ? Optional.empty()
