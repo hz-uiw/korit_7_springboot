@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -28,7 +29,7 @@ public class BookController {
 
     @PostMapping("/api/book")
     @ApiModelProperty(value = "도서 추가")
-    public ResponseEntity<SuccessResponseDto<Book>> addBook(@RequestBody ReqAddBookDto reqAddBookDto) {
+    public ResponseEntity<SuccessResponseDto<Book>> addBook(@Valid @RequestBody ReqAddBookDto reqAddBookDto) {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(bookService.addBook(reqAddBookDto)));
     }
 
