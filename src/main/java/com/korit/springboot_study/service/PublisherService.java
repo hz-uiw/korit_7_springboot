@@ -1,6 +1,7 @@
 package com.korit.springboot_study.service;
 
 import com.korit.springboot_study.dto.request.ReqAddPublisherDto;
+import com.korit.springboot_study.dto.request.ReqSearchPublisher;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Publisher;
 import com.korit.springboot_study.repository.PublisherRepository;
@@ -16,8 +17,8 @@ public class PublisherService {
     @Autowired
     private PublisherRepository publisherRepository;
 
-    public SuccessResponseDto<List<Publisher>> getAllPublishers() throws NotFoundException {
-        List<Publisher> foundPublishers = publisherRepository.findAllPublisher()
+    public SuccessResponseDto<List<Publisher>> getAllPublishers(ReqSearchPublisher reqSearchPublisher) throws Exception {
+        List<Publisher> foundPublishers = publisherRepository.findAllPublisher(reqSearchPublisher.getSearchKeyword())
                 .orElseThrow(() -> new NotFoundException("출판사 정보가 없습니다."));
         return new SuccessResponseDto<>(foundPublishers);
     }

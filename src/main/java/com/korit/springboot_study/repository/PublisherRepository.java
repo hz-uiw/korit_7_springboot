@@ -16,8 +16,8 @@ public class PublisherRepository {
     @Autowired
     private PublisherMapper publisherMapper;
 
-    public Optional<List<Publisher>> findAllPublisher() {
-        List<Publisher> foundPublishers = publisherMapper.selectPublishersAll();
+    public Optional<List<Publisher>> findAllPublisher(String publisherName) {
+        List<Publisher> foundPublishers = publisherMapper.selectPublishersAllContaining(publisherName);
         return foundPublishers.isEmpty()
                 ? Optional.empty()
                 : Optional.ofNullable(foundPublishers);

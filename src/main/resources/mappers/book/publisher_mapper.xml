@@ -12,12 +12,14 @@
     </resultMap>
 
     <!--  도서 출판사 전체 조회  -->
-    <select id="selectPublishersAll" resultMap="publisherResultMap">
+    <select id="selectPublishersAllContaining" resultMap="publisherResultMap">
         select
             publisher_id,
             publisher_name
         from
             publisher_tb
+        where
+            publisher_name like concat ("%", #{publisherName}, "%")
     </select>
 
     <!--  도서 출판사 추가  -->
