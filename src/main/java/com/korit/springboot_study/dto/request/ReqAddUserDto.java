@@ -1,4 +1,4 @@
-package com.korit.springboot_study.dto;
+package com.korit.springboot_study.dto.request;
 
 import com.korit.springboot_study.entity.User;
 import io.swagger.annotations.ApiModelProperty;

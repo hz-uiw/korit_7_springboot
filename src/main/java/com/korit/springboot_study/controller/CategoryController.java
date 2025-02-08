@@ -1,5 +1,6 @@
 package com.korit.springboot_study.controller;
 
+import com.korit.springboot_study.dto.request.ReqAddCategoryDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Category;
 import com.korit.springboot_study.service.CategoryService;
@@ -8,6 +9,8 @@ import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,5 +24,11 @@ public class CategoryController {
     @ApiModelProperty(value = "카테고리 전체 조회")
     public ResponseEntity<SuccessResponseDto<List<Category>>> getCategories() throws NotFoundException {
         return ResponseEntity.ok().body(categoryService.getAllCategories());
+    }
+
+    @PostMapping("/api/category")
+    @ApiModelProperty(value = "도서 카테고리 추가")
+    public ResponseEntity<SuccessResponseDto<Category>> addCategory(@RequestBody ReqAddCategoryDto reqAddCategoryDto) {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(categoryService.addCategory(reqAddCategoryDto)));
     }
 }

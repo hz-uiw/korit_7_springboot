@@ -1,6 +1,7 @@
 package com.korit.springboot_study.controller;
 
 
+import com.korit.springboot_study.dto.request.ReqAddAuthorDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Author;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,6 +12,7 @@ import com.korit.springboot_study.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -26,8 +28,9 @@ public class AuthorController {
         return ResponseEntity.ok().body(authorService.getAllAuthors());
     }
 
-//    @PostMapping("/api/author")
-//    public ResponseEntity<SuccessResponseDto<List<Author>>> addAuthor() {
-//        return ResponseEntity
-//    }
+    @PostMapping("/api/author")
+    @ApiModelProperty(value = "저자 정보 추가")
+    public ResponseEntity<SuccessResponseDto<Author>> addAuthor(@RequestBody ReqAddAuthorDto reqAddAuthorDto) {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(authorService.addAuthor(reqAddAuthorDto)));
+    }
 }

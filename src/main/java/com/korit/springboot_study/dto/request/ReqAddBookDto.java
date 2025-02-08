@@ -1,5 +1,6 @@
 package com.korit.springboot_study.dto.request;
 
+import com.korit.springboot_study.entity.Book;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -17,4 +18,15 @@ public class ReqAddBookDto {
     private int publisherId;
     @ApiModelProperty(value = "이미지 경로(URL)", example = "http://example.com/test.jpg", required = true)
     private String bookImgUrl;
+
+    public Book toBook() {
+        return Book.builder().
+                bookName(bookName).
+                authorId(authorId).
+                isbn(isbn).
+                categoryId(categoryId).
+                publisherId(publisherId).
+                bookImgUrl(bookImgUrl).
+                build();
+    }
 }

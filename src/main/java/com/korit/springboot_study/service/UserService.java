@@ -1,7 +1,6 @@
 package com.korit.springboot_study.service;
 
-import com.korit.springboot_study.dto.ReqAddUserDto;
-import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
+import com.korit.springboot_study.dto.request.ReqAddUserDto;
 import com.korit.springboot_study.entity.User;
 import com.korit.springboot_study.entity.UserRole;
 import com.korit.springboot_study.exception.CustomDuplicateKeyException;

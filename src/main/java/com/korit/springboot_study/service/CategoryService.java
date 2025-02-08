@@ -1,5 +1,6 @@
 package com.korit.springboot_study.service;
 
+import com.korit.springboot_study.dto.request.ReqAddCategoryDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Category;
 import com.korit.springboot_study.repository.CategoryRepository;
@@ -19,5 +20,11 @@ public class CategoryService {
         List<Category> foundCategories = categoryRepository.findAllCategory()
                 .orElseThrow(() -> new NotFoundException("카테고리가 존재하지 않습니다."));
         return new SuccessResponseDto<>(foundCategories);
+    }
+
+    public Category addCategory(ReqAddCategoryDto reqAddCategoryDto) {
+        return categoryRepository
+                .save(reqAddCategoryDto.toCategory())
+                .get();
     }
 }

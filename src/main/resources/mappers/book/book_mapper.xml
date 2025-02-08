@@ -64,7 +64,7 @@
         insert into
             book_tb
         values
-            (default, #{bookName})
+            (default, #{bookName}, #{authorId}, #{isbn}, #{categoryId}, #{publisherId}, #{bookImgUrl})
     </insert>
 
 </mapper>
