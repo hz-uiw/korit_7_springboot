@@ -16,8 +16,8 @@ public class CategoryRepository {
     @Autowired
     private CategoryMapper categoryMapper;
 
-    public Optional<List<Category>> findAllCategory() {
-        List<Category> foundCategories = categoryMapper.selectCategoriesAll();
+    public Optional<List<Category>> findAllCategory(String categoryName) {
+        List<Category> foundCategories = categoryMapper.selectCategoriesAllContaining(categoryName);
         return foundCategories.isEmpty()
                 ? Optional.empty()
                 : Optional.ofNullable(foundCategories);
