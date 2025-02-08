@@ -11,13 +11,14 @@
         <result property="authorName" column="author_name"/>
     </resultMap>
 
-    <!--  저자 전체 조회  -->
-    <select id="selectAuthorsAll" resultMap="authorResultMap">
+    <select id="selectAuthorsAllContaining" resultMap="authorResultMap">
         select
             author_id,
             author_name
         from
             author_tb
+        where
+            author_name like concat("%", #{authorName}, "%")
     </select>
 
     <!--  저자 추가  -->

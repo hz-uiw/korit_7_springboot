@@ -16,12 +16,12 @@ public class AuthorRepository {
     @Autowired
     private AuthorMapper authorMapper;
 
-    public Optional<List<Author>> findAllAuthor() {
-        List<Author> foundAuthors = authorMapper.selectAuthorsAll();
+    public Optional<List<Author>> findAllAuthor(String authorName) {
+        List<Author> foundAuthors = authorMapper.selectAuthorsAllContaining(authorName);
 
         return foundAuthors.isEmpty()
                 ? Optional.empty()
-                : Optional.ofNullable(foundAuthors);
+                : Optional.of(foundAuthors);
     }
 
     public Optional<Author> save(Author author) {
