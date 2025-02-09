@@ -1,7 +1,7 @@
 package com.korit.springboot_study.service;
 
-import com.korit.springboot_study.dto.request.ReqAddCategoryDto;
-import com.korit.springboot_study.dto.request.ReqSearchCategory;
+import com.korit.springboot_study.dto.request.book.add.ReqAddCategoryDto;
+import com.korit.springboot_study.dto.request.book.search.ReqSearchCategory;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Category;
 import com.korit.springboot_study.repository.CategoryRepository;

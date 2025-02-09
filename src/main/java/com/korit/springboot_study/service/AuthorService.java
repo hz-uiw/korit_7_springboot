@@ -1,8 +1,7 @@
 package com.korit.springboot_study.service;
 
-import com.korit.springboot_study.dto.request.ReqAddAuthorDto;
-import com.korit.springboot_study.dto.request.ReqSearchAuthor;
-import com.korit.springboot_study.dto.request.ReqSearchBook;
+import com.korit.springboot_study.dto.request.book.add.ReqAddAuthorDto;
+import com.korit.springboot_study.dto.request.book.search.ReqSearchAuthor;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Author;
 import com.korit.springboot_study.repository.AuthorRepository;

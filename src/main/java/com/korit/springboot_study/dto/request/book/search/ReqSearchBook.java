@@ -1,4 +1,4 @@
-package com.korit.springboot_study.dto.request;
+package com.korit.springboot_study.dto.request.book.search;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

@@ -1,13 +1,12 @@
-package com.korit.springboot_study.controller;
+package com.korit.springboot_study.controller.bookInfo;
 
-import com.korit.springboot_study.dto.request.ReqAddPublisherDto;
-import com.korit.springboot_study.dto.request.ReqSearchPublisher;
+import com.korit.springboot_study.dto.request.book.add.ReqAddPublisherDto;
+import com.korit.springboot_study.dto.request.book.search.ReqSearchPublisher;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Publisher;
 import com.korit.springboot_study.service.PublisherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;
-import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
