@@ -13,11 +13,11 @@ public class ReqAddUserDto {
     @Pattern(regexp = "^[a-zA-Z0-9_]{5,20}$", message = "사용자 이름은 5~20자의 영문자, 숫자, 밑줄(_)만 포함 가능합니다.")
     private String username;
 
-    @ApiModelProperty(value = "비밀번호", example = "qwe234", required = true)
+    @ApiModelProperty(value = "비밀번호", example = "qwer1234!", required = true)
     @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[!@#$%^&*])[A-Za-z\\d!@#$%^&*]{8,20}$", message = "8~20자의 영문자, 숫자, 특수문자(!@#$%^&*)를 포함해야 합니다.")
     private String password;
 
-    @ApiModelProperty(value = "성명", example = "민", required = true)
+    @ApiModelProperty(value = "성명", example = "신신", required = true)
     @Pattern(regexp = "^[가-힣a-zA-Z]{2,30}$", message = "이름은 2~30자의 한글 또는 영문자로 입력해야 합니다.")
     private String name;
 

@@ -26,7 +26,7 @@ public class UserController {
     @GetMapping("/api/user/username/duplication")
     public ResponseEntity<SuccessResponseDto<Boolean>> duplicateUsername(
             @RequestParam
-            @Pattern(regexp = "^[a-zA-Z0-9_]{5,20}$", message = "사용자 이름은 5~20자의 영문자, 숫자, 밑줄(_)만 포함 가능합니다.")
+            @Pattern(regexp = "^[a-zA-Z0-9_]{1,20}$", message = "사용자 이름은 1~20자의 영문자, 숫자, 밑줄(_)만 포함 가능합니다.")
             String username) {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(userService.duplicateUsername(username)));
     }

@@ -29,7 +29,7 @@
 
     <insert id="insert" keyProperty="userId" useGeneratedKeys="true">
         insert into
-            use_tb
+            user_tb
         values
             (default, #{username}, #{password}, #{name}, #{email})
     </insert>
