@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Validated
 @RestController
@@ -53,6 +54,12 @@ public class UserController {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(userService.getUserById(userId)));
     }
 
+    @GetMapping("/api/users")
+    @ApiOperation(value = "전체 사용자 ID 조회")
+    public ResponseEntity<SuccessResponseDto<List<User>>> getUsers() throws NotFoundException {
+        return ResponseEntity.ok().body(userService.getAllUsers());
+    }
+
     @PutMapping("/api/user/{userId}")
     @ApiOperation(value = "사용자 수정")
     public ResponseEntity<SuccessResponseDto<?>> modifyUser(
@@ -60,7 +67,7 @@ public class UserController {
             @ApiParam(value = "사용자 ID", example = "1", required = true)
             @PathVariable int userId,
             @Valid @RequestBody ReqModifyUserDto reqModifyUserDto
-    ) {
-        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    ) throws NotFoundException, MethodArgumentNotValidException {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(userService.modifyUser(userId, reqModifyUserDto)));
     }
 }
