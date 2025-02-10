@@ -58,5 +58,9 @@ public class UserService {
                 .orElseThrow(() -> new NotFoundException("해당 사용자 ID는 존재하지 않습니다."));
     }
 
+    public Boolean deleteUser(int userId) throws NotFoundException {
+        return userRepository.deleteUserById(userId)
+                .orElseThrow(() -> new NotFoundException("해당 사용자 ID는 존재하지 않습니다."));
+    }
 
 }
