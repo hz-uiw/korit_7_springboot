@@ -1,7 +1,7 @@
 package com.korit.springboot_study.service;
 
-import com.korit.springboot_study.dto.request.book.add.ReqAddBookDto;
-import com.korit.springboot_study.dto.request.book.search.ReqSearchBook;
+import com.korit.springboot_study.dto.request.ReqAddBookDto;
+import com.korit.springboot_study.dto.request.ReqSearchBook;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Book;
 import com.korit.springboot_study.repository.BookRepository;

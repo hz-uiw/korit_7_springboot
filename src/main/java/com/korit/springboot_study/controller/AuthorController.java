@@ -1,8 +1,8 @@
-package com.korit.springboot_study.controller.bookInfo;
+package com.korit.springboot_study.controller;
 
 
-import com.korit.springboot_study.dto.request.book.add.ReqAddAuthorDto;
-import com.korit.springboot_study.dto.request.book.search.ReqSearchAuthor;
+import com.korit.springboot_study.dto.request.ReqAddAuthorDto;
+import com.korit.springboot_study.dto.request.ReqSearchAuthor;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Author;
 import io.swagger.annotations.Api;

@@ -1,7 +1,7 @@
-package com.korit.springboot_study.controller.bookInfo;
+package com.korit.springboot_study.controller;
 
-import com.korit.springboot_study.dto.request.book.add.ReqAddPublisherDto;
-import com.korit.springboot_study.dto.request.book.search.ReqSearchPublisher;
+import com.korit.springboot_study.dto.request.ReqAddPublisherDto;
+import com.korit.springboot_study.dto.request.ReqSearchPublisher;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Publisher;
 import com.korit.springboot_study.service.PublisherService;

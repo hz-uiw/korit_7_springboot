@@ -1,4 +1,4 @@
-package com.korit.springboot_study.dto.request.book.search;
+package com.korit.springboot_study.dto.request;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReqSearchAuthor {
-    @ApiModelProperty(value = "저자명", example = "박민지", required = true)
+public class ReqSearchPublisher {
+    @ApiModelProperty(value = "출판사명", example = "성심당", required = true)
+
     private String searchKeyword = "";
 }

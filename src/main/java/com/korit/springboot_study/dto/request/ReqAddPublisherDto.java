@@ -1,4 +1,4 @@
-package com.korit.springboot_study.dto.request.book.add;
+package com.korit.springboot_study.dto.request;
 
 import com.korit.springboot_study.entity.Publisher;
 import io.swagger.annotations.ApiModelProperty;

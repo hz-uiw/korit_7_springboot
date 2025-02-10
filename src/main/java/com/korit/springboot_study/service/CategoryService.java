@@ -1,7 +1,7 @@
 package com.korit.springboot_study.service;
 
-import com.korit.springboot_study.dto.request.book.add.ReqAddCategoryDto;
-import com.korit.springboot_study.dto.request.book.search.ReqSearchCategory;
+import com.korit.springboot_study.dto.request.ReqAddCategoryDto;
+import com.korit.springboot_study.dto.request.ReqSearchCategory;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.Category;
 import com.korit.springboot_study.repository.CategoryRepository;
@@ -9,6 +9,7 @@ import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class CategoryService {
         return new SuccessResponseDto<>(foundCategories);
     }
 
-    public Category addCategory(ReqAddCategoryDto reqAddCategoryDto) {
+    public Category addCategory(@Valid ReqAddCategoryDto reqAddCategoryDto) {
         return categoryRepository
                 .save(reqAddCategoryDto.toCategory())
                 .get();
