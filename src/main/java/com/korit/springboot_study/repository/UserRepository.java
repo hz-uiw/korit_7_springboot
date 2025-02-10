@@ -26,4 +26,8 @@ public class UserRepository {
         }
         return Optional.of(user);
     }
+
+    public Optional<User> findById(int id) {
+        return Optional.ofNullable(userMapper.selectById(id));
+    }
 }
