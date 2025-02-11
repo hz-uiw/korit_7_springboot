@@ -11,7 +11,7 @@ public interface PostLikeMapper {
     int insert(PostLike postLike);
     int deleteByPostIdAndUserId(PostLike postLike);
 
-    int selectLikeCountByPostId(@Param(value = "postId") Integer postId);
+    int selectLikeCountByPostId(@Param(value = "postId") int postId);
 
     List<PostLike> selectLikeCountAll();
 }

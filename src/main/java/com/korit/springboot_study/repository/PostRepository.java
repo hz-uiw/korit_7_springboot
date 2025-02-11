@@ -1,6 +1,8 @@
 package com.korit.springboot_study.repository;
 
 import com.korit.springboot_study.entity.Post;
+import com.korit.springboot_study.entity.PostLike;
+import com.korit.springboot_study.exception.CustomDuplicateKeyException;
 import com.korit.springboot_study.mapper.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,4 +30,6 @@ public class PostRepository {
         List<Post> posts = postMapper.selectAllByKeywordContaining(startIndex, limitCount, keyword);
         return posts.isEmpty() ? Optional.empty() : Optional.of(posts);
     }
+
+
 }

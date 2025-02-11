@@ -25,7 +25,7 @@
     <insert id="insert" keyProperty="postId" useGeneratedKeys="true">
         insert into
             post_tb
-        vales
+        values
             (default, #{userId}, #{title}, #{content}, now(), now())
     </insert>
 
@@ -41,10 +41,10 @@
         )
         select
             pt.post_id,
-            pt.user_id,
+            pt.user_id as pt_user_id,
 
-            ut.user_id as pt_user_id,
-            ut.username as ut_user_id,
+            ut.user_id as ut_user_id,
+            ut.username,
 
             pt.title,
             pt.content,
@@ -55,9 +55,9 @@
         from
             post_tb as pt
             inner join user_tb as ut on(ut.user_id = pt.user_id)
-            left outer join cte_post_like_count_tb as cplct on (cplct.post_id = pt.post_id)
+            left outer join cte_post_like_count_tb as cplct on(cplct.post_id = pt.post_id)
         where
-            post_id = #{postId}
+            pt.post_id = #{postId}
     </select>
 
     <select id="selectAllByKeywordContaining" resultMap="postResultMap">
@@ -72,10 +72,10 @@
         )
         select
             pt.post_id,
-            pt.user_id,
+            pt.user_id as pt_user_id,
 
-            ut.user_id as pt_user_id,
-            ut.username as ut_user_id,
+            ut.user_id as ut_user_id,
+            ut.username,
 
             pt.title,
             pt.content,
@@ -86,10 +86,10 @@
         from
             post_tb as pt
             inner join user_tb as ut on(ut.user_id = pt.user_id)
-            left outer join cte_post_like_count_tb as cplct on (cplct.post_id = pt.post_id)
+            left outer join cte_post_like_count_tb as cplct on(cplct.post_id = pt.post_id)
         where
-            title like ("%", #{keyword}, "%")
-            or content like ("%", #{keyword}, "%")
+            title like concat ("%", #{keyword}, "%")
+            or content like concat ("%", #{keyword}, "%")
         order by
             post_id desc
         limit #{startIndex}, #{limitCount}

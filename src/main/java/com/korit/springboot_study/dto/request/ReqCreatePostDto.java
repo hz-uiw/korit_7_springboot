@@ -3,6 +3,8 @@ package com.korit.springboot_study.dto.request;
 import com.korit.springboot_study.entity.Post;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class ReqCreatePostDto {
     private int userId;
@@ -14,6 +16,8 @@ public class ReqCreatePostDto {
                 .userId(userId)
                 .title(title)
                 .content(content)
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
     }
 }

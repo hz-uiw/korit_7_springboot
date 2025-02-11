@@ -9,9 +9,10 @@ import java.util.List;
 @Mapper
 public interface PostMapper {
     int insert(Post post);
-    Post selectById(@Param(value = "PostId") int postId);
+    Post selectById(@Param(value = "postId") int postId);
     List<Post> selectAllByKeywordContaining(
             @Param(value = "startIndex") int startIndex,
             @Param(value =  "limitCount")int limitCount,
-            @Param(value = "keyword") String keyword);
+            @Param(value = "keyword") String keyword
+    );
 }
