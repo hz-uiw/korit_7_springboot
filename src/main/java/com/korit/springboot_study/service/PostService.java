@@ -1,5 +1,6 @@
 package com.korit.springboot_study.service;
 
+import com.korit.springboot_study.aspect.annotation.PrintParamsAop;
 import com.korit.springboot_study.dto.request.ReqCreatePostDto;
 import com.korit.springboot_study.entity.Post;
 import com.korit.springboot_study.entity.PostLike;
@@ -29,6 +30,7 @@ public class PostService {
         return postRepository.save(reqCreatePostDto.toPost()).get();
     }
 
+    @PrintParamsAop
     public Post getPostById(int postId) throws Exception {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
@@ -39,6 +41,7 @@ public class PostService {
         return post;
     }
 
+    @PrintParamsAop
     public List<Post> getAllPostsByKeywordContaining(int page, int size, String keyword) throws NotFoundException {
         int startIndex = (page - 1) * size;
         List<Post> posts = postRepository.findAllByKeywordContaining(startIndex, size, keyword)
