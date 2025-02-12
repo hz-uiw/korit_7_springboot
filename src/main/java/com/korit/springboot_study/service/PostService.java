@@ -10,6 +10,7 @@ import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StopWatch;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -29,8 +30,13 @@ public class PostService {
     }
 
     public Post getPostById(int postId) throws Exception {
-        return postRepository.findById(postId)
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new NotFoundException("해당 PostId의 게시글이 존재하지 않습니다."));
+        stopWatch.stop();
+        System.out.println("메서드 실행 시간: " + stopWatch.getTotalTimeSeconds());
+        return post;
     }
 
     public List<Post> getAllPostsByKeywordContaining(int page, int size, String keyword) throws NotFoundException {
