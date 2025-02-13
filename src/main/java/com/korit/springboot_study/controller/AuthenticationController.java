@@ -1,5 +1,6 @@
 package com.korit.springboot_study.controller;
 
+import com.korit.springboot_study.dto.request.ReqSigninDto;
 import com.korit.springboot_study.dto.request.ReqSignupDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
 import com.korit.springboot_study.entity.User;
@@ -28,7 +29,8 @@ public class AuthenticationController {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(authenticationService.signup(reqSignupDto)));
     }
     @PostMapping("/api/auth/signin")
-    public ResponseEntity<SuccessResponseDto<User>> signin() {
+    @ApiModelProperty(value = "로그인")
+    public ResponseEntity<SuccessResponseDto<User>> signin(@Valid @RequestBody ReqSigninDto reqSigninDto)throws MethodArgumentNotValidException {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
     }
 }
