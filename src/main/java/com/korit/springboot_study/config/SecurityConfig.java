@@ -23,7 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().disable();
         http.formLogin().disable();
+
         http.addFilterBefore(customAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+
         http.authorizeHttpRequests()
                 .antMatchers(
                         "/api/post/**",
