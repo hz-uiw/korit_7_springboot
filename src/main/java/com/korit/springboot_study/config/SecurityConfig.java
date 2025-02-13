@@ -3,10 +3,12 @@ package com.korit.springboot_study.config;
 import com.korit.springboot_study.security.exception.CustomAuthenticationEntryPoint;
 import com.korit.springboot_study.security.filter.CustomAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -19,6 +21,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private CustomAuthenticationFilter customAuthenticationFilter;
 
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic().disable();
@@ -28,15 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeHttpRequests()
                 .antMatchers(
-                        "/api/post/**",
-                        "/api/user/**"
+                        "/swagger-ui.html",
+                        "/api/auth/**"
                 )
                 .permitAll()
-//                .antMatchers(
-//                        "/api/post/**",
-//                        "/api/user/**"
-//                )
-//                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

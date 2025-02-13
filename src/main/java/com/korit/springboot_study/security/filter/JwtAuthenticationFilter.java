@@ -2,6 +2,7 @@ package com.korit.springboot_study.security.filter;
 
 import com.korit.springboot_study.repository.UserRepository;
 import com.korit.springboot_study.security.jwt.JwtProvider;
+import com.korit.springboot_study.security.principal.PrincipalUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,9 @@ public class JwtAuthenticationFilter implements Filter {
             int userId = Integer.parseInt(claims.get("userId").toString());
             userRepository.findById(userId).ifPresent(user -> {
                 SecurityContext securityContext = SecurityContextHolder.getContext();
-                Authentication authentication = new UsernamePasswordAuthenticationToken();
-                securityContext.setAuthentication();
+                PrincipalUser principalUser = new PrincipalUser(user);
+                Authentication authentication = new UsernamePasswordAuthenticationToken(principalUser,principalUser.getPassword(),principalUser.getAuthorities());
+                securityContext.setAuthentication(authentication);
             });
         }
 }

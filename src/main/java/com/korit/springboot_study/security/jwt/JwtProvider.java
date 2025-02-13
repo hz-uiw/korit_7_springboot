@@ -16,7 +16,7 @@ public class JwtProvider {
     private Key key;
 
     public JwtProvider(@Value("${jwt.secret}")String secret) {
-        key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(""));
+        key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
     public boolean validateToken(String token) {
@@ -27,6 +27,7 @@ public class JwtProvider {
         Claims claims = null;
         try {
             JwtParser parser = Jwts.parserBuilder()
+                    .setSigningKey(key)
                     .build();
             claims = parser.parseClaimsJws(removeBearer(token)).getBody();
         } catch (Exception e) {
