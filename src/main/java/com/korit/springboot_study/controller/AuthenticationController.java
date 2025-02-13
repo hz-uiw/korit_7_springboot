@@ -1,5 +1,6 @@
 package com.korit.springboot_study.controller;
 
+import com.korit.springboot_study.aspect.annotation.PrintParamsAop;
 import com.korit.springboot_study.dto.request.ReqSigninDto;
 import com.korit.springboot_study.dto.request.ReqSignupDto;
 import com.korit.springboot_study.dto.response.common.SuccessResponseDto;
@@ -25,6 +26,7 @@ public class AuthenticationController {
 
     @PostMapping("/api/auth/signup")
     @ApiModelProperty(value = "회원가입")
+    @PrintParamsAop
     public ResponseEntity<SuccessResponseDto<User>> signup(@Valid @RequestBody ReqSignupDto reqSignupDto)throws MethodArgumentNotValidException {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(authenticationService.signup(reqSignupDto)));
     }

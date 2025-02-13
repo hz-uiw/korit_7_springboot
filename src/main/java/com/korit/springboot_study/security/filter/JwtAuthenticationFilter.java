@@ -27,6 +27,7 @@ public class JwtAuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+
         // Bear Token(JWT)
         String authorization = request.getHeader("Authorization");
 
@@ -45,7 +46,7 @@ public class JwtAuthenticationFilter implements Filter {
             userRepository.findById(userId).ifPresent(user -> {
                 SecurityContext securityContext = SecurityContextHolder.getContext();
                 PrincipalUser principalUser = new PrincipalUser(user);
-                Authentication authentication = new UsernamePasswordAuthenticationToken(principalUser,principalUser.getPassword(),principalUser.getAuthorities());
+                Authentication authentication = new UsernamePasswordAuthenticationToken(principalUser, principalUser.getPassword(), principalUser.getAuthorities());
                 securityContext.setAuthentication(authentication);
             });
         }

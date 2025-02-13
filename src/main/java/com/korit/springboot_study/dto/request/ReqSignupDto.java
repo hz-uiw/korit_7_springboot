@@ -29,7 +29,7 @@ public class ReqSignupDto {
     public User toUser(BCryptPasswordEncoder passwordEncoder) {
         return User.builder()
                 .username(username)
-                .password(password)
+                .password(passwordEncoder.encode(password))
                 .name(name)
                 .email(email)
                 .build();
