@@ -30,7 +30,7 @@ public class AuthenticationController {
     }
     @PostMapping("/api/auth/signin")
     @ApiModelProperty(value = "로그인")
-    public ResponseEntity<SuccessResponseDto<User>> signin(@Valid @RequestBody ReqSigninDto reqSigninDto)throws MethodArgumentNotValidException {
-        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    public ResponseEntity<SuccessResponseDto<String>> signin(@Valid @RequestBody ReqSigninDto reqSigninDto)throws MethodArgumentNotValidException {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(authenticationService.signin(reqSigninDto)));
     }
 }
