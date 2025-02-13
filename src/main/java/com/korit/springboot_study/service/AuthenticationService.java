@@ -30,6 +30,9 @@ public class AuthenticationService {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
+    @Autowired
+    private JwtProvider jwtProvider;
+
     @Transactional(rollbackFor = Exception.class)
     public User signup(ReqSignupDto reqSignupDto) {
         User user = reqSignupDto.toUser(passwordEncoder);
@@ -54,9 +57,9 @@ public class AuthenticationService {
             throw new BadCredentialsException("사용자 정보를 다시 확인하세요");
         }
 
-        accessToken = jwtpr
-
         // AccessToken 생성
+        accessToken = jwtProvider.createAccessToken(foundUser);
+
         return accessToken;
     }
 }
