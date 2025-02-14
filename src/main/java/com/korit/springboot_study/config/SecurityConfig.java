@@ -3,6 +3,8 @@ package com.korit.springboot_study.config;
 import com.korit.springboot_study.security.exception.CustomAuthenticationEntryPoint;
 import com.korit.springboot_study.security.filter.CustomAuthenticationFilter;
 import com.korit.springboot_study.security.filter.JwtAuthenticationFilter;
+import com.korit.springboot_study.security.oauth2.OAuth2Service;
+import com.korit.springboot_study.security.oauth2.OAuth2SuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,9 +23,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
 
     @Autowired
-    private CustomAuthenticationFilter customAuthenticationFilter;
-    @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Autowired
+    private OAuth2Service oAuth2Service;
+
+    @Autowired
+    private OAuth2SuccessHandler oAuth2SuccessHandler;
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -41,6 +48,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.exceptionHandling()
                 .authenticationEntryPoint(customAuthenticationEntryPoint);
+
+        http.oauth2Login()
+                .successHandler(oAuth2SuccessHandler)
+                        .userInfoEndpoint()
+                                .userService(oAuth2Service);
+
+
 
         http.authorizeHttpRequests()
                 .antMatchers(
