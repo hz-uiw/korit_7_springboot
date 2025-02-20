@@ -37,4 +37,10 @@ public class AuthorController {
     public ResponseEntity<SuccessResponseDto<Author>> addAuthor(@Valid @RequestBody ReqAddAuthorDto reqAddAuthorDto) {
         return ResponseEntity.ok().body(new SuccessResponseDto<>(authorService.addAuthor(reqAddAuthorDto)));
     }
+
+    @PostMapping("/api/auth/logout")
+    @ApiModelProperty(value = "로그아웃")
+    public ResponseEntity<SuccessResponseDto<?>> logout() {
+        return ResponseEntity.ok().body(new SuccessResponseDto<>(null));
+    }
 }
